@@ -19,7 +19,9 @@ router.get('/notes', async (ctx, next) => {
 });
 
 router.post('/notes', async(ctx, next) => {
-    notes.push({...ctx.request.body, id: nextId++});
+    let data = JSON.parse(ctx.request.body);
+    console.log(data);
+    notes.push({...data, id: nextId++});
     ctx.response.status = 204;
 });
 
